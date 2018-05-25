@@ -61,6 +61,6 @@ export default (props: Props) => {
 };
 
 const ButtonWrapper = styled.div`
-  width: 480px;
+  width: 780px;
   margin: 0 auto;
 `;

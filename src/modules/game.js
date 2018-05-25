@@ -1,13 +1,15 @@
 // ducks
 import { createAction, handleActions } from 'redux-actions';
 
+import targetList from '../other/targetList';
+
 // actions
 export const changeSquare = createAction('CHANGE_SQUARE');
 export const winner = createAction('WINNER');
 export const gameEnd = createAction('GAME_END');
 
 // state
-const buttonLength = 9;
+const buttonLength = 36;
 const squares = [];
 for (let i = 0; i < buttonLength; i += 1) {
   squares.push({ id: i, value: '' });
@@ -47,16 +49,6 @@ export const game = handleActions({
 
   WINNER: (state, action) => {
     const squareList = [...state.squares];
-    const targetList = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-    ];
 
     const checkedIds = (arr, suit) => arr.map(obj => (
       obj.value === suit ? obj.id : null
@@ -64,8 +56,14 @@ export const game = handleActions({
     const currentIds = checkedIds(squareList, action.payload.value);
 
     const winnerExists = targetList.some((val) => {
-      const [a, b, c] = val;
-      return currentIds.includes(a) && currentIds.includes(b) && currentIds.includes(c);
+      const [a, b, c, d, e] = val;
+      return (
+        currentIds.includes(a)
+        && currentIds.includes(b)
+        && currentIds.includes(c)
+        && currentIds.includes(d)
+        && currentIds.includes(e)
+      );
     });
 
     return {
@@ -74,7 +72,6 @@ export const game = handleActions({
       gameEnd: winnerExists,
     };
   },
-
   GAME_END: (state) => {
     const squareList = [...state.squares];
 

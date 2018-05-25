@@ -9,7 +9,7 @@ import BoardCont from '../containers/BoardCont';
 export default () => (
   <Wrapper>
     <Content>
-      <Header>三目並べ redux</Header>
+      <Header>五目並べ redux</Header>
       <BoardCont />
     </Content>
   </Wrapper>

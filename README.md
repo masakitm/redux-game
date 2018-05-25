@@ -1,1 +1,3 @@
-# TIC-TAC-TOE redux-actions styled-components
+# TIC-TAC-TOE
+
+redux-actions + styled-components

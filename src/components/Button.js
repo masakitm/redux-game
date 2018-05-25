@@ -23,15 +23,17 @@ export default (props: Props) => (
 );
 
 const Element = styled.button`
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 5px;
-  line-height: 150px;
+  line-height: 120px;
   vertical-align: top;
   font-size: 3rem;
-  border: 1px solid #ddd;
   border-radius: 10px;
+  border: none;
   outline: none;
   -webkit-appearance: none;
   appearance: none;
+  background: linear-gradient(0deg,#ddd,#eee);
+  color: #333;
 `;
