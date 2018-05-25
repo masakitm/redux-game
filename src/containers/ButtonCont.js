@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Button from '../components/Button';
+import Button from '../components/Button/';
 import { changeSquare, winner, gameEnd } from '../modules/game';
 
 const mapState = (state, props) => ({
@@ -9,7 +9,9 @@ const mapState = (state, props) => ({
     value: props.payload.value,
   },
   children: props.children,
+  squareValue: props.squareValue,
   winner: state.game.winner,
+  gameEnd: state.game.gameEnd,
 });
 
 const mapDispatch = dispatch => ({

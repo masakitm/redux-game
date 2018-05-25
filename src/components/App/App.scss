@@ -1,0 +1,13 @@
+.Wrapper {
+  display: table;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(-135deg,#e4a972,#9941d8);
+}
+
+.Content {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+}

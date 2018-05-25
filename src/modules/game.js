@@ -46,12 +46,11 @@ export const game = handleActions({
       }
     );
   },
-
   WINNER: (state, action) => {
     const squareList = [...state.squares];
 
-    const checkedIds = (arr, suit) => arr.map(obj => (
-      obj.value === suit ? obj.id : null
+    const checkedIds = (arr, value) => arr.map(obj => (
+      obj.value === value ? obj.id : null
     ));
     const currentIds = checkedIds(squareList, action.payload.value);
 
