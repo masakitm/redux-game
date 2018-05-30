@@ -49,10 +49,10 @@ export const game = handleActions({
   WINNER: (state, action) => {
     const squareList = [...state.squares];
 
-    const checkedIds = (arr, value) => arr.map(obj => (
+    const checkedSquareIds = (arr, value) => arr.map(obj => (
       obj.value === value ? obj.id : null
     ));
-    const currentIds = checkedIds(squareList, action.payload.value);
+    const currentIds = checkedSquareIds(squareList, action.payload.value);
 
     const winnerExists = targetList.some((val) => {
       const [a, b, c, d, e] = val;
