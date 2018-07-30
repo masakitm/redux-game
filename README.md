@@ -93,8 +93,8 @@ export default reducer;
 ```
 
 ## css-modules採用について
-CSS in JSは多様な選択肢があり、個人的にはstyled-componentsを好んで使っています。
-https://github.com/styled-components/styled-components
+CSS in JSは多様な選択肢があり、個人的にはstyled-componentsを好んで使っています。  
+https://github.com/styled-components/styled-components  
 webpackに別途loaderパッケージを追加する必要がなく、複雑な構成や設定でのハマりを防げる事。その上でcomponentに紐づいたスタイリングができ、またscssも使えることからベストな選択肢だと考えています。  
   
 今回css-modulesを選択したのは、現場レベルでの採用率が高いことと、reactの知識が少ないデザイナーやマークアッパーにも理解しやすいためです。  
