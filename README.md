@@ -72,17 +72,17 @@ webpackに別途loaderパッケージを追加する必要がなく、複雑な�
 案件によってはまだまだstyled-componentsを導入しづらい現場もあるため今回はこちら導入をいたしました。　　
 
 ## eslintについて
-eslintはJavaScript(ECMAScript)のための静的検証ツールです。括弧の有無、タイプミス、使用されていない変数など、コードを実行する前に明確なバグを見つけたりスタイルを統一するのに役立つ非常に便利なツールです。　　
-自分のプロジェクトに合わせたカスタムルールも作れ、モダンフロントエンド開発には必須ともいうべきツールです。　　
-https://qiita.com/mysticatea/items/f523dab04a25f617c87d　　
+eslintはJavaScript(ECMAScript)のための静的検証ツールです。括弧の有無、タイプミス、使用されていない変数など、コードを実行する前に明確なバグを見つけたりスタイルを統一するのに役立つ非常に便利なツールです。　　  
+自分のプロジェクトに合わせたカスタムルールも作れ、モダンフロントエンド開発には必須ともいうべきツールです。　　  
+https://qiita.com/mysticatea/items/f523dab04a25f617c87d　　  
 今回はairbnbが公開している`eslint-config-airbnb`を導入し、こちらに準拠したスタイルでコードを記述しています。
 
 ## prettierについて
 prettierはコードコードフォーマッタです。  
-eslintとよく似ていますが、ソースコードを綺麗に保つ・コードスタイルを統一・自動整形する部分により特化しています。
-ESLintでは整形できないコードを整形できる・ESLintと比べて手軽で確実に整形できる部分が大きく秀でたツールです。
-https://qiita.com/soarflat/items/06377f3b96964964a65d
-
-これらを用いてエディタ上で保存した際にeslintとprettierが連携し自動でコードを修正を行うよう設定しています。 　　 
-prettierとeslintはデフォルトでは衝突するため`eslint-config-prettier``eslint-plugin-prettier`の二つを導入して共存を可能とし、保存時にまずeslintが走る > prettierがeslintのルールに則って整形というマクロ的手法を採用しています。
+eslintとよく似ていますが、ソースコードを綺麗に保つ・コードスタイルを統一・自動整形する部分により特化しています。  
+ESLintでは整形できないコードを整形できる・ESLintと比べて手軽で確実に整形できる部分が大きく秀でたツールです。  
+https://qiita.com/soarflat/items/06377f3b96964964a65d  
+  
+これらを用いてエディタ上で保存した際にeslintとprettierが連携し自動でコードを修正を行うよう設定しています。  
+prettierとeslintはデフォルトでは衝突するため`eslint-config-prettier``eslint-plugin-prettier`の二つを導入して共存を可能とし、保存時にまずeslintが走る > prettierがeslintのルールに則って整形というマクロ的手法を採用しています。  
 これによりバグの発見やコードのちょっとした整形に手間を取られることなく、非常に効率的な開発が可能になります。
