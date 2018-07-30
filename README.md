@@ -64,8 +64,33 @@ https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c
   
 責務の面からは`Reducer``Action``ActionCreator`を分割するのは正しいです。  
 ですが、互いにComponent内で紐づけられており、密結合であること。また大規模アプリケーション以外ではducksの見通しの良さが大きなメリットとなることから、ducksを選択いたしました。  
+ducksはredux推奨パッケージ`redux-actions`とも相性がよく、併用するとさらなる見通しの改善が可能です。  
+次のような記述が可能となりreduxの開発がより快適になります。
 
-また、redux推奨パッケージ`redux-actions`を用いて見通しの改善を図っています。  
+```
+import { createActions, handleActions, combineActions } from 'redux-actions';
+
+const defaultState = { counter: 10 };
+
+const { increment, decrement } = createActions({
+  INCREMENT: (amount = 1) => ({ amount }),
+  DECREMENT: (amount = 1) => ({ amount: -amount })
+});
+
+const reducer = handleActions(
+  {
+    [combineActions(increment, decrement)]: (
+      state,
+      { payload: { amount } }
+    ) => {
+      return { ...state, counter: state.counter + amount };
+    }
+  },
+  defaultState
+);
+
+export default reducer;
+```
 
 ## css-modules採用について
 CSS in JSは多様な選択肢があり、個人的にはstyled-componentsを好んで使っています。
