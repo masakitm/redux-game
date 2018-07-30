@@ -48,6 +48,10 @@ React+Redux自己学習のため、いわゆる5目並べ系ゲームをスク�
 ## Javascript記法について
 ES6記法にて実装をおこなっております。
 
+## webpackについて
+jsバンドラーツールとしてwebpackを採用しています。
+今回は公開を目的としないwebアプリケーションのため、webpack.config.jsを分けておりません。
+
 ## ディレクトリ構成について
 * components viewを受け持つstatelessなコンポーネントとscssを格納しています
 * container ビジネスロジックを受け持ち、reduxと接続するコンポーネントを格納しています
