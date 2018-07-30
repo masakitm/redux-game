@@ -101,7 +101,8 @@ webpackに別途loaderパッケージを追加する必要がなく、複雑な�
 案件によってはまだまだstyled-componentsを導入しづらい現場もあるため今回はこちら導入をいたしました。　　
 
 ## eslintについて
-eslintはJavaScript(ECMAScript)のための静的検証ツールです。括弧の有無、タイプミス、使用されていない変数など、コードを実行する前に明確なバグを見つけたりスタイルを統一するのに役立つ非常に便利なツールです。　　  
+eslintはJavaScript(ECMAScript)のための静的検証ツールです。  
+括弧の有無、タイプミス、使用されていない変数など、コードを実行する前に明確なバグを見つけたりスタイルを統一するのに役立つ非常に便利なツールです。　　  
 自分のプロジェクトに合わせたカスタムルールも作れ、モダンフロントエンド開発には必須ともいうべきツールです。　　  
 https://qiita.com/mysticatea/items/f523dab04a25f617c87d　　  
 今回はairbnbが公開している`eslint-config-airbnb`を導入し、こちらに準拠したスタイルでコードを記述しています。
@@ -115,3 +116,63 @@ https://qiita.com/soarflat/items/06377f3b96964964a65d
 これらを用いてエディタ上で保存した際にeslintとprettierが連携し自動でコードを修正を行うよう設定しています。  
 prettierとeslintはデフォルトでは衝突するため`eslint-config-prettier``eslint-plugin-prettier`の二つを導入して共存を可能とし、保存時にまずeslintが走る > prettierがeslintのルールに則って整形というマクロ的手法を採用しています。  
 これによりバグの発見やコードのちょっとした整形に手間を取られることなく、非常に効率的な開発が可能になります。
+
+## stateless functional componentについて
+componentsディレクトリ内はstateless functional component形式で記述しています。  
+各コンポーネントになるべくstateやロジックを持たせず、ただjsxのみを返す関数です。  
+与えられたpropsを元にviewだけを独立させる事で責務の分離を図っています。  
+これによりstateが各地へ分散せず、運用時などに非常に管理しやすくなります。
+
+```
+routerを採用したアプリでの一例
+
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const Nav = () => (
+  <Container>
+    <Link to="/">Home</Link>
+    <Link to="/github">GitHub</Link>
+    <Link to="/about">About</Link>
+  </Container>
+)
+
+export default Nav
+```
+
+## container componentについて
+containerコンポーネントはロジック部分を担当するコンポーネントです。  
+reduxとの繋ぎこみやstateの受け持ち、props形式で stateless functional component にデータ（reduxや非同期通信内容など）やアクション（関数）を渡します。  
+責務を分割する事により、のちのちの管理が非常にしやすくなります。
+
+```
+axios, recomposeを利用したアプリでの一例
+
+import { lifecycle, compose, pure } from 'recompose'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { getRepos } from '~/modules/github'
+
+import contents from '~/components/pages/GitHub'
+
+const connector = connect(
+  state => ({
+    repos: state.github.repos
+  }),
+  dispatch => bindActionCreators({ getRepos }, dispatch)
+)
+
+const Enhance = compose(
+  connector,
+  pure,
+  lifecycle({
+    async componentDidMount() {
+      if (this.props.repos.length < 1) {
+        this.props.getRepos()
+      }
+    }
+  })
+)
+
+export default Enhance(contents)
+```
