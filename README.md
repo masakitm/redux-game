@@ -45,15 +45,15 @@ React+Redux自己学習のため、いわゆる5目並べ系ゲームをスク�
   }
 ```
 
-### Javascript記法について
+## Javascript記法について
 ES6記法にて実装をおこなっております。
 
-### ディレクトリ構成について
+## ディレクトリ構成について
 * components viewを受け持つstatelessなコンポーネントとscssを格納しています
 * container ビジネスロジックを受け持ち、reduxと接続するコンポーネントを格納しています
 * modules redux関連 ducksを用いて記述したファイルを格納しています
 
-### redux構成について
+## redux構成について
 ducksと呼ばれる構成を用いてファイル数の削減・可読性の向上を狙っています。  
 https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c  
 これは`Reducer``Action``ActionCreator`　を1ファイルにまとめる記述方法の一種です。  
@@ -63,7 +63,7 @@ https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c
 
 また、redux推奨パッケージ`redux-actions`を用いて見通しの改善を図っています。  
 
-### css-modules採用について
+## css-modules採用について
 CSS in JSは多様な選択肢があり、個人的にはstyled-componentsを好んで使っています。
 https://github.com/styled-components/styled-components
 webpackに別途loaderパッケージを追加する必要がなく、複雑な構成や設定でのハマりを防げる事。その上でcomponentに紐づいたスタイリングができ、またscssも使えることからベストな選択肢だと考えています。  
@@ -71,13 +71,13 @@ webpackに別途loaderパッケージを追加する必要がなく、複雑な�
 今回css-modulesを選択したのは、現場レベルでの採用率が高いことと、reactの知識が少ないデザイナーやマークアッパーにも理解しやすいためです。  
 案件によってはまだまだstyled-componentsを導入しづらい現場もあるため今回はこちら導入をいたしました。　　
 
-### eslintについて
+## eslintについて
 eslintはJavaScript(ECMAScript)のための静的検証ツールです。括弧の有無、タイプミス、使用されていない変数など、コードを実行する前に明確なバグを見つけたりスタイルを統一するのに役立つ非常に便利なツールです。　　
 自分のプロジェクトに合わせたカスタムルールも作れ、モダンフロントエンド開発には必須ともいうべきツールです。　　
 https://qiita.com/mysticatea/items/f523dab04a25f617c87d　　
 今回はairbnbが公開している`eslint-config-airbnb`を導入し、こちらに準拠したスタイルでコードを記述しています。
 
-### prettierについて
+## prettierについて
 prettierはコードコードフォーマッタです。  
 eslintとよく似ていますが、ソースコードを綺麗に保つ・コードスタイルを統一・自動整形する部分により特化しています。
 ESLintでは整形できないコードを整形できる・ESLintと比べて手軽で確実に整形できる部分が大きく秀でたツールです。
