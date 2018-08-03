@@ -143,7 +143,7 @@ export default Nav
 ## container componentについて
 containerコンポーネントはロジック部分を担当するコンポーネントです。  
 reduxとの繋ぎこみやstateの受け持ち、props形式で stateless functional component にデータ（reduxや非同期通信内容など）やアクション（関数）を渡します。  
-責務を分割する事により、のちのちの管理が非常にしやすくなります。
+責務を分割する事により、修正時どのファイルを修正すべきかが自明となり非常に管理しやすくなります。
 
 ```javascript
 axios, recomposeを利用したアプリでの一例
