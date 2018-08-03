@@ -6,7 +6,7 @@ create date: 2018/05
 React+Redux自己学習のため、いわゆる5目並べ系ゲームをスクラッチで再現・redux化しアレンジを加えたものです。  
 使用パッケージは以下の通りです。  
 
-```
+```javascript
   "devDependencies": {
     "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.0",
@@ -67,7 +67,7 @@ https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c
 ducksはredux推奨パッケージ`redux-actions`とも相性がよく、併用するとさらなる見通しの改善が可能です。  
 次のような記述が可能となりreduxの開発がより快適になります。
 
-```
+```javascript
 import { createActions, handleActions, combineActions } from 'redux-actions';
 
 const defaultState = { counter: 10 };
@@ -123,7 +123,7 @@ componentsディレクトリ内はstateless functional component形式で記述�
 与えられたpropsを元にviewだけを独立させる事で責務の分離を図っています。  
 これによりstateが各地へ分散せず、運用時などに非常に管理しやすくなります。
 
-```
+```javascript
 routerを採用したアプリでの一例
 
 import React from 'react'
@@ -145,7 +145,7 @@ containerコンポーネントはロジック部分を担当するコンポー�
 reduxとの繋ぎこみやstateの受け持ち、props形式で stateless functional component にデータ（reduxや非同期通信内容など）やアクション（関数）を渡します。  
 責務を分割する事により、のちのちの管理が非常にしやすくなります。
 
-```
+```javascript
 axios, recomposeを利用したアプリでの一例
 
 import { lifecycle, compose, pure } from 'recompose'
